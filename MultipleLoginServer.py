@@ -1,0 +1,11 @@
+import shutit
+session1 = shutit.create_session('bash')
+session2 = shutit.create_session('bash')
+password1 = session1.get_input('Password for server1', ispass=True)
+password2 = session2.get_input('Password for server2', ispass=True)
+session1.login('ssh you@one.example.com', user='you', password=password1)
+session2.login('ssh you@two.example.com', user='you', password=password2)
+session1.send('hostname', echo=True)
+session2.send('hostname', echo=True)
+session1.logout()
+session2.logout()
